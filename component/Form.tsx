@@ -9,7 +9,7 @@ const Form = ({ isOpen, toggleForm, addToList, list }: IFormProps) => {
     const [description, setDescription] = useState();
     const [error, setError] = useState();
 
-    const finish = () => {
+    const finish = (): void => {
         if (title) {
             const newList = [...list];
             newList.push({ title, description });
@@ -21,7 +21,7 @@ const Form = ({ isOpen, toggleForm, addToList, list }: IFormProps) => {
         }
     };
 
-    const close = () => {
+    const close = (): void => {
         clearState();
         toggleForm();
     };
@@ -29,11 +29,11 @@ const Form = ({ isOpen, toggleForm, addToList, list }: IFormProps) => {
     const errorMessage = () => {
         if (error) {
             console.log('we had error');
-            return <Text style={{ color: '#ff0000' }}> asdfas {error} </Text>;
+            return <Text style={{ color: '#ff0000' }}> {error} </Text>;
         }
     };
 
-    const clearState = () => {
+    const clearState = (): void => {
         setError('');
         setTitle('');
         setDescription('');

@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
+import Item from './Item';
 
 export default function ListView({ remindMeList }: IListViewProps) {
     return (
-        <View>
-            {remindMeList.map((remindMe: IRemindMe, index: number) => (
-                <View key={index}>
-                    <Text style={styles.text}>{remindMe.title}</Text>
-                    <Text>{remindMe.description}</Text>
-                </View>
-            ))}
-        </View>
+        <SafeAreaView>
+            <FlatList
+                data={remindMeList}
+                scrollEnabled={true}
+                renderItem={({ item }) => <Item title={item.title} description={item.description} />}
+            />
+        </SafeAreaView>
     );
 }
 
@@ -22,10 +22,3 @@ export interface IRemindMe {
 interface IListViewProps {
     remindMeList: IRemindMe[];
 }
-
-const styles = StyleSheet.create({
-    text: {
-        fontSize: 15,
-        fontWeight: 'bold',
-    },
-});
