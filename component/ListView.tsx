@@ -8,7 +8,9 @@ export default function ListView({ remindMeList }: IListViewProps) {
             <FlatList
                 data={remindMeList}
                 scrollEnabled={true}
-                renderItem={({ item }) => <Item title={item.title} description={item.description} />}
+                renderItem={({ item, index }) => (
+                    <Item index={index} title={item.title} description={item.description} />
+                )}
             />
         </SafeAreaView>
     );

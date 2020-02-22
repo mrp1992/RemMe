@@ -3,8 +3,6 @@ import { Modal, StyleSheet, Text, TextInput, TouchableHighlight, TouchableOpacit
 import { IRemindMe } from './ListView';
 
 const Form = ({ isOpen, toggleForm, addToList, list }: IFormProps) => {
-    console.log('IsOPEN:::', isOpen);
-
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
     const [error, setError] = useState();
@@ -28,7 +26,6 @@ const Form = ({ isOpen, toggleForm, addToList, list }: IFormProps) => {
 
     const errorMessage = () => {
         if (error) {
-            console.log('we had error');
             return <Text style={{ color: '#ff0000' }}> {error} </Text>;
         }
     };

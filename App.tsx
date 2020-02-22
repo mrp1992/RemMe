@@ -7,7 +7,6 @@ export default function App() {
     const [formVisible, setFormVisible] = useState<boolean>(false);
     const [list, setList] = useState([]);
     const toggleForm = () => {
-        console.log('formVisible?: ', !formVisible);
         setFormVisible(!formVisible);
     };
 

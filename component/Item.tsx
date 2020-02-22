@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { IRemindMe } from './ListView';
 
-const Item = ({ title, description }: IRemindMe) => {
+const Item = ({ index, title, description }: IItemProps) => {
+    const [selectedItem, setSelectedItem] = useState<number[]>([]);
+
+    const listPress = key => {
+        console.log('we pressed key', key);
+
+        if (selectedItem.includes(key)) {
+            const cloneSelectedItem = selectedItem;
+            const itemIndex = cloneSelectedItem.indexOf(key);
+            cloneSelectedItem.splice(itemIndex, 1);
+            setSelectedItem([...cloneSelectedItem]);
+        } else {
+            setSelectedItem([...selectedItem, key]);
+        }
+    };
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+            key={index}
+            style={selectedItem.includes(index) ? { backgroundColor: '#d8bfd8' } : {}}
+            onPress={() => listPress(index)}
+        >
             <Text style={styles.text}>{title}</Text>
             <Text>{description}</Text>
         </TouchableOpacity>
@@ -19,3 +37,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
+
+interface IItemProps extends IRemindMe {
+    index: number;
+}
