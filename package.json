@@ -5,7 +5,14 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "eslint:fix": "yarn eslint --fix",
+    "lint": "yarn tsc:check && yarn prettier:check && yarn eslint",
+    "lint:fix": "yarn tsc:check && yarn prettier && yarn eslint:fix",
+    "prettier": "prettier --write \"./{,**/}*.{js,ts}{,x}\"",
+    "prettier:check": "prettier --check \"./{,**/}*.{js,ts}{,x}\"",
+    "tsc:check": "tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "expo": "~36.0.0",
@@ -19,10 +26,16 @@
     "@babel/core": "^7.0.0",
     "@types/react": "~16.9.0",
     "@types/react-native": "~0.60.23",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
     "babel-preset-expo": "~8.0.0",
     "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-no-unsafe-innerhtml": "^1.0.16",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-native": "^3.8.1",
+    "prettier": "^1.19.1",
     "typescript": "~3.6.3"
   },
   "private": true
